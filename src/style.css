@@ -105,6 +105,8 @@ svg {
 
 .todo-item {
     display: flex;
+    flex-basis: 200px;
+    flex-shrink: 0;
 }
 
 .sidebar-project-container {
@@ -168,6 +170,20 @@ svg {
         background-color: red;
         transform: scale(1.1);
     }
+}
+
+.header-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: 5px solid blue;
+    width: 100%;
+}
+
+.todo-wrapper {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
 }
 
 /* .form-modal {

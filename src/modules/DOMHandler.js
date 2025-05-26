@@ -4,6 +4,7 @@ import { addTodo, removeTodo } from "./storage";
 
 let projectFormModal = null;
 
+
 function renderProjectForm() {
     if (projectFormModal) return projectFormModal;
     const formModal = document.createElement('dialog');
@@ -85,7 +86,11 @@ function renderProjectForm() {
 }
 
 function createTodoElement(data) {
+    // const todoItemWrapper = document.createElement('div');
+    // todoItemWrapper.classList.add('todo-wrapper');
+    // document.getElementById('todo-container').appendChild(todoItemWrapper);
     const todoItem = document.createElement('div');
+    // todoItemWrapper.appendChild(todoItem);
     todoItem.classList.add('todo-item');
     todoItem.innerHTML = `
     <h3>Title: ${data.title}</h3>
@@ -104,6 +109,11 @@ function createTodoElement(data) {
         document.getElementById('todo-container').innerHTML = '';
         window.renderProjectView(window.currentProjectId);
     });
+
+    // todoItemWrapper.appendChild(todoItem);
+    todoItem.appendChild(deleteButton);
+
+    // return todoItemWrapper;
     return todoItem;
 }
 

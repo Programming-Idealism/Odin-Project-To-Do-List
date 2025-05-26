@@ -78,14 +78,29 @@ function renderProjectView(projectId) {
     const p = getProject().find(pr => pr.id === projectId);
     if (!p) return;
 
+    const headerWrapper = document.createElement('div');
+    headerWrapper.classList.add('header-wrapper');
     const header = document.createElement('h1');
     header.classList.add('header');
     header.textContent = 'Project' + ' ' + p.title;
-    document.getElementById('todo-container').appendChild(header);
+    document.getElementById('todo-container').append(headerWrapper);
+    headerWrapper.appendChild(header);
+    const container = document.getElementById('todo-container');
+    const tasksWrapper = document.createElement('div');
+    tasksWrapper.classList.add('todo-wrapper');
+    container.appendChild(tasksWrapper);
+    // const todoItem = document.querySelector('todo-item');
+    // tasksWrapper.appendChild(todoItem);
 
+    // p.todo.forEach(todoData => {
+    //     const el = createTodoElement(todoData);
+    //     document.getElementById('todo-container').appendChild(el);
+    // });
+
+    // --- build each card and append it ---
     p.todo.forEach(todoData => {
-        const el = createTodoElement(todoData);
-        document.getElementById('todo-container').appendChild(el);
+        const card = createTodoElement(todoData);  // <-- factory gives you a <div class="todo-item">
+        tasksWrapper.appendChild(card);
     });
 
     renderTask();
